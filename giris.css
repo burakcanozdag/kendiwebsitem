@@ -1,3 +1,4 @@
+
 .neumorphic{
     background: #e0e5ec; border-radius: 30px;
     box-shadow: 20px 20px 30px #a3b1c6, -20px -20px 30px #ffffff;
@@ -15,8 +16,8 @@
 
 }
 .neumorphic-input::placeholder {
-    color: #000000;          /* Daha koyu bir gri */
-    opacity: 10;           /* Tam opaklık */
+    color: #000000;         
+    opacity: 10;           
 }
 
 .neumorphic-card{
@@ -24,16 +25,33 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px; width: 400px;
+    padding: 50px;
+    width: 400px;
     text-align: center;
+    background: #e0e5ec;
+    border-radius: 30px;
+    box-shadow: 20px 20px 30px #a3b1c6, -20px -20px 30px #ffffff;
+    position: relative; 
+
+}
+
+.loader {
+    position: absolute; 
+    bottom: -60px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 48px;  
+    height: 48px;
+    display: none;
+
 }
 
 .neumorphic-button {
     background: #e0e5ec;
     border-radius: 20px;
     box-shadow: 10px 10px 20px #a3b1c6, -10px -10px 20px #ffffff;
-    padding: 15px 40px;      /* Daha büyük buton */
-    font-size: 18px;         /* Yazı büyüklüğü */
+    padding: 15px 40px;     
+    font-size: 18px;        
     margin-top: 20px;
     cursor: pointer;
     border: none;
@@ -44,14 +62,9 @@
     box-shadow: inset 10px 10px 20px #a3b1c6, inset -10px -10px 20px #ffffff;
 }
 
-.loader {
-    position: relative;
-    width: 48px;
-    height: 48px;
-}
 
 .bar {
-    position: absolute;
+      position: absolute;
     top: 50%;
     left: 50%;
     width: 2px;

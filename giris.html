@@ -5,23 +5,22 @@
 <style>
 body {
       margin: 0;
-      height: 100vh;
+      height: 100vh; 
       display: flex;
-      justify-content: center; /* yatay ortalama */
-      align-items: center;     /* dikey ortalama */
-      background-color: #f0f0f0; /* isteğe bağlı arka plan */
+      justify-content: center; 
+      align-items: center;    
+      background-color: #f0f0f0; 
     }
 </style>
 </head>    
 <body>
-<form class = "neumorphic neumorphic-card" method="post" action="giris.php">
+<form class="neumorphic neumorphic-card" onsubmit="return calistir(event)"> 
    <h1>GİRİŞ</h1>
-   <input type="text" class="neumorphic neumorphic-input" name="email" placeholder="Email" required>
-   <input type="password" class="neumorphic neumorphic-input" name="sifre" placeholder="Şifre" required>
+   <input type="text" class="neumorphic neumorphic-input" name="email" id="email" placeholder="Email" autocomplete="off" required>
+   <input type="password" class="neumorphic neumorphic-input" name="sifre" id="sifre" placeholder="Şifre" required>
    <button type="submit" class="neumorphic neumorphic-button">Giriş Yap</button>  
-</form>
 
-<div class="loader">
+    <div class="loader" id="loader" style="display: none;">
     <div class="bar bar1"></div>
     <div class="bar bar2"></div>
     <div class="bar bar3"></div>
@@ -35,5 +34,30 @@ body {
     <div class="bar bar11"></div>
     <div class="bar bar12"></div>
 </div>
+</form>
+
+<script>
+    function calistir(event) {
+        event.preventDefault(); 
+
+        var v1 = document.getElementById("email").value;
+        var v2 = document.getElementById("sifre").value;
+        var v3 = "b241210097@gmail.com";
+        var v4 = "b241210097";
+
+        document.getElementById("loader").style.display="block";
+        setTimeout(function(){
+            if (v1 === v3 && v2 === v4) {
+             window.location.href = "anasayfa.html";        
+        } 
+        else {
+            document.getElementById("loader").style.display = "none";
+            alert("Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyiniz!");
+        }
+        },3000);
+
+        return false; 
+    }
+</script>
 </body> 
 </html>   
