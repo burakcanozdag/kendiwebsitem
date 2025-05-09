@@ -1,0 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.renklihücre{
+    text-align: center;
+    background-color: #ECF0F1;
+    color: #2C3E50;
+}
+
+.renkligörsel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.rektorsatir{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.baslik{
+ color:darkslategray
+}
+
+
+
+body {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    background: linear-gradient(to right, #F3F6F9, #DCE3E9);
+}
+
+
+.menu{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.menu a {
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #fff;
+    background: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    background: #ff6ecf;
+    transform: scale(1.1);
+}
+
+#site-footer {
+    background-color: #2C3E50; 
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}
+
