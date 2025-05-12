@@ -1,6 +1,6 @@
 <?php
 
-$dogru_email="b241210097@gmail.com";
+$dogru_email="b241210097@sakarya.edu.tr";
 $dogru_sifre="b241210097";
 
 $email=$_POST['email'];
