@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">  
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <link rel="stylesheet" href="iletisim.css">
+
+</head>
+<body>
+<nav class="menu">
+        <a href="anasayfa.html">ANA SAYFA</a>
+        <a href="hakkimda.html">HAKKIMDA</a>
+        <a href="ozgecmis.html">ÖZGEÇMİŞ</a>
+        <a href="sehrim.html">ŞEHRİM</a>
+        <a href="takim.html">TAKIMIMIZ</a>
+        <a href="ilgialani.html">İLGİ ALANLARIM</a>
+    </nav>
+<br><br>
+
+<div id="app">
+    <form @submit.prevent="validateAndSend">
+        <table>
+            <tr>
+                <td><label for="isim">Ad :</label></td>
+                <td><input type="text" v-model="isim" autocomplete="off"  id="isim" placeholder="Adınızı giriniz..."></td>
+            </tr>
+            <tr>
+                <td><label for="soyisim">Soyad :</label></td>
+                <td><input type="text" v-model="soyisim"  autocomplete="off"  id="soyisim" placeholder="Soyadınızı giriniz..."></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email :</label></td>
+                <td><input type="text" v-model="email" autocomplete="off" id="email" placeholder="Emailinizi giriniz..."></td>
+            </tr>
+            <tr>
+                <td><label for="no">Telefon Numarası :</label></td>
+                <td><input type="text" v-model="no" autocomplete="off" id="no" placeholder="Telefon numaranızı giriniz..."></td>
+            </tr>
+            <tr>
+                <td><label for="message">Mesajınız :</label></td>
+                <td><textarea v-model="mesaj" autocomplete="off" id="message" rows="5" cols="20" placeholder="Mesajınızı giriniz..."></textarea></td>
+            </tr>
+            <tr>
+                <td><label>Cinsiyet :</label></td>
+                <td>
+                    <input type="radio" v-model="cinsiyet" name="erkek" id="erkek" value="erkek"> Erkek
+                    <input type="radio" v-model="cinsiyet"  name="kadın" id="kadın" value="kadın"> Kadın
+                </td>
+            </tr>
+            <tr>
+                <td><button type="button" @click="validateForm">DOĞRULA</button></td>
+                <td>
+                    <button type="submit" @click="validateAndSend" :disabled="!dogrulandi">GÖNDER</button>
+                    <button type="reset" id="temizleButton">TEMİZLE</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<footer id="site-footer">
+    <p>BU SİTENİN TÜM HAKLARI BURAK CAN ÖZDAĞ'A  AİTTİR © 2025</p>
+</footer>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("dogrulaButton").addEventListener("click", function() { 
+        let isim = document.getElementById("isim").value.trim();
+        let soyisim = document.getElementById("soyisim").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let no = document.getElementById("no").value.trim();
+        let mesaj = document.getElementById("message").value.trim();
+        let erkek=document.getElementById("erkek").checked;
+        let kadın=document.getElementById("kadın").checked;
+
+        if (!isim || !soyisim) {
+            alert("Lütfen Ad ve Soyad kısımlarını boş bırakmayınız!");
+            return;
+        }
+
+        let dogruEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!dogruEmail.test(email)) {
+            alert("Lütfen geçerli bir e-mail giriniz!");
+            return;
+        }
+
+        let dogruNo = /^[0-9]+$/;
+        if (!dogruNo.test(no)) {
+            alert("Lütfen geçerli bir telefon numarası giriniz!");
+            return;
+        }
+
+        if (!mesaj) {
+            alert("Lütfen iletmek istediğiniz mesajı yazınız!");
+            return;
+        }
+
+        if (!erkek && !kadın) {
+            alert("Lütfen cinsiyetinizi belirtiniz!");
+            return;
+        }
+
+        alert("Tüm alanlar doğru bir biçimde girildi!");
+
+        
+        document.getElementById("isim").setAttribute("readonly", true);
+        document.getElementById("soyisim").setAttribute("readonly", true);
+        document.getElementById("email").setAttribute("readonly", true);
+        document.getElementById("no").setAttribute("readonly", true);
+        document.getElementById("message").setAttribute("readonly", true);
+        document.getElementById("erkek").disabled = true;
+        document.getElementById("kadın").disabled = true;
+        document.getElementById("gonderButton").disabled = false;
+
+    });
+
+    document.getElementById("gonderButton").addEventListener("click", function() {
+      
+        document.getElementById("isim").removeAttribute("readonly");
+        document.getElementById("soyisim").removeAttribute("readonly");
+        document.getElementById("email").removeAttribute("readonly");
+        document.getElementById("no").removeAttribute("readonly");
+        document.getElementById("message").removeAttribute("readonly");
+        document.getElementById("erkek").disabled = false;
+        document.getElementById("kadın").disabled = false;
+
+      
+        document.getElementById("isim").value = "";
+        document.getElementById("soyisim").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("no").value = "";
+        document.getElementById("message").value = "";
+        document.getElementById("erkek").checked = false;
+        document.getElementById("kadın").checked = false;
+
+        
+        document.getElementById("gonderButton").disabled = true;
+        
+    });
+
+    document.getElementById("temizleButton").addEventListener("click", function() {
+        
+        document.getElementById("isim").removeAttribute("readonly");
+        document.getElementById("soyisim").removeAttribute("readonly");
+        document.getElementById("email").removeAttribute("readonly");
+        document.getElementById("no").removeAttribute("readonly");
+        document.getElementById("message").removeAttribute("readonly");
+        document.getElementById("erkek").disabled = false;
+        document.getElementById("kadın").disabled = false;
+
+        
+        document.getElementById("isim").value = "";
+        document.getElementById("soyisim").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("no").value = "";
+        document.getElementById("message").value = "";
+        document.getElementById("erkek").checked = false;
+        document.getElementById("kadın").checked = false;
+
+        
+        document.getElementById("gonderButton").disabled = true;
+        
+        alert("Form temizlendi!");
+    });
+
+
+});
+
+    
+ const app = Vue.createApp({
+    data() {
+        return {
+            isim: '',
+            soyisim: '',
+            email: '',
+            no: '',
+            mesaj: '',
+            cinsiyet: null,
+            dogrulandi: false
+        };
+    },
+    methods: {
+        validateForm() {
+            if (!this.isim || !this.soyisim) {
+                alert("Lütfen Ad ve Soyad  kısımlarını boş bırakmayınız!");
+                return;
+            }
+
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.email)) {
+                alert("Lütfen geçerli bir e-mail adresi giriniz!");
+                return;
+            }
+
+            let phoneRegex = /^[0-9]+$/;
+            if (!phoneRegex.test(this.no)) {
+                alert("Telefon numarası sadece rakamlardan oluşmalıdır!");
+                return;
+            }
+
+            if (!this.mesaj) {
+                alert("Mesaj alanı boş olamaz!");
+                return;
+            }
+
+            if (!this.cinsiyet) {
+                alert("Cinsiyet seçmelisiniz!");
+                return;
+            }
+
+            alert("Tüm alanlar doğru girildi, form gönderime hazır!");
+
+            this.dogrulandi = true;
+        },
+        validateAndSend() {
+            if (!this.dogrulandi) {
+                alert("Önce doğrulama yapmalısınız!");
+                return;
+            }
+
+            fetch("iletisim.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    isim: this.isim,
+                    soyisim: this.soyisim,
+                    email: this.email,
+                    no: this.no,
+                    mesaj: this.mesaj,
+                    cinsiyet: this.cinsiyet
+                })
+            })
+            .then(response => response.text())
+            .then(data => alert("Form başarıyla gönderildi: "))
+            .catch(error => alert("Hata oluştu: " + error));
+            this.isim = '';
+            this.soyisim = '';
+            this.email = '';
+            this.no = '';
+            this.mesaj = '';
+            this.cinsiyet = null;
+            this.dogrulandi = false;
+        }
+    }
+}).mount("#app");
+
+window.addEventListener('scroll', function() {
+    var footer = document.getElementById('site-footer');
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        footer.style.opacity = "1";
+    } else {
+        footer.style.opacity = "0"; 
+    }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #F3F6F9, #DCE3E9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    padding-top: 70px; /* Menü sabitlendiği için içeriği aşağı kaydırıyoruz */
+}
+
+#app {
+    background: linear-gradient(to right, #E3E7EB, #D1D8DE);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+}
+
+table {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    box-shadow: inset 3px 3px 8px #bbb, inset -3px -3px 8px #fff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Tabloyu tam ortalamak için eklendi */
+}
+
+input, textarea {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #F9FBFC, #E6EBEF);
+    box-shadow: inset 3px 3px 6px #c2c8cc, inset -3px -3px 6px #ffffff;
+}
+
+button {
+    background: linear-gradient(to right, #DCE3E9, #F3F6F9);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px #ccc, -4px -4px 8px #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #C2CCD3, #E1E5EA);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px;
+}
+
+.menu a {
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+   background: #ff6ecf;
+    transform: scale(1.1);
+}
+
+#site-footer {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
