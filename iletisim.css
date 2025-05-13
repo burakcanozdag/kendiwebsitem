@@ -7,7 +7,7 @@ body {
     min-height: 100vh;
     margin: 0;
     flex-direction: column;
-    padding-top: 70px; /* Menü sabitlendiği için içeriği aşağı kaydırıyoruz */
+    padding-top: 70px;
 }
 
 #app {
@@ -28,7 +28,7 @@ table {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Tabloyu tam ortalamak için eklendi */
+    justify-content: center; 
 }
 
 input, textarea {
