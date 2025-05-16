@@ -1,0 +1,115 @@
+body {
+  display: grid;
+    place-items: center;
+    height: 100%;
+    background: linear-gradient(to right, #F3F6F9, #DCE3E9);
+    font-family: 'Poppins', sans-serif; 
+}
+
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(243, 246, 249, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+td, th {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease-in-out;
+}
+
+
+
+.menu{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.menu a {
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #fff;
+    background: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    background: #ff6ecf;
+    transform: scale(1.1);
+}
+
+#site-footer {
+    background-color: #2C3E50; 
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+figcaption {
+    font-style: italic;
+    text-align: center;
+    color: #555;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+a {
+    color: #333; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+a:hover {
+    color: #ff6e6e; 
+}
+
+
+section {
+    width: 80%;
+    background: rgba(255, 255, 255, 0.85); /* Hafif transparan efekt */
+    backdrop-filter: blur(12px); /* Glassmorphism etkisi */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 15px; /* Kenarları yumuşat */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2), -4px -4px 15px rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+section h2 {
+    font-size: 24px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease-in-out;
+}
+
+
+
+
+
+
