@@ -1,5 +1,5 @@
 body {
-  display: grid;
+    display: grid;
     place-items: center;
     height: 100%;
     background: linear-gradient(to right, #F3F6F9, #DCE3E9);
@@ -15,6 +15,7 @@ table {
     background: rgba(243, 246, 249, 0.85);
     backdrop-filter: blur(10px);
     border-radius: 15px;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
 td, th {
@@ -91,13 +92,14 @@ a:hover {
 
 section {
     width: 80%;
-    background: rgba(255, 255, 255, 0.85); /* Hafif transparan efekt */
-    backdrop-filter: blur(12px); /* Glassmorphism etkisi */
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(12px); 
     padding: 20px;
     margin: 20px auto;
-    border-radius: 15px; /* Kenarları yumuşat */
+    border-radius: 15px; 
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2), -4px -4px 15px rgba(255, 255, 255, 0.5);
     text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
 section h2 {
@@ -109,7 +111,16 @@ section h2 {
 }
 
 
-
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 
 
