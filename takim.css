@@ -1,0 +1,32 @@
+body {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    background: linear-gradient(to right, #F3F6F9, #DCE3E9);
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.menu a {
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #fff;
+    background: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    background: #ff6ecf;
+    transform: scale(1.1);
+}
