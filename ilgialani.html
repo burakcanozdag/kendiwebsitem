@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="ilgialani.css">
+  <title>Beşiktaş Sezon İstatistikleri</title>
+</head>
+<body>
+
+  <nav class="menu">
+        <a href="anasayfa.html">ANA SAYFA</a>
+        <a href="hakkimda.html">HAKKIMDA</a>
+        <a href="ozgecmis.html">ÖZ GEÇMİŞ</a>
+        <a href="sehrim.html">ŞEHRİM</a>
+        <a href="takim.html">TAKIMIMIZ</a>
+        <a href="iletisim.html">İLETİŞİM</a>
+  </nav>
+  <br><br><br>
+
+
+
+<div class="team-info" id="teamInfo">
+  <img id="teamLogo" src="" alt="Logo" />
+  <div class="team-info-details">
+    <h2 id="teamName">Takım Adı</h2>
+    <p id="teamDetails">Ülke: ... | Kuruluş: ... | Stadyum: ...</p>
+  </div>
+</div>
+
+
+<h2>Beşiktaş Sezon İstatistikleri</h2>
+<select id="seasonSelect">
+  <option value="sezon" selected>Lütfen Sezon Seçin</option>
+  <option value="2021">2021</option>
+  <option value="2022">2022</option>
+  <option value="2023">2023</option>
+</select>
+
+
+<div class="stats-container">
+  <table id="statsTable">
+    <thead>
+      <tr>
+        <th>İstatistik</th>
+        <th>Değer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="2">Lütfen sezon seçin...</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer id="site-footer">
+    <p>BU SİTENİN TÜM HAKLARI BURAK CAN ÖZDAĞ'A  AİTTİR © 2025</p>
+</footer>
+
+<script>
+  const apiKey = 'e3785428d73952a33a39c6861d6a11b7'; 
+  const teamId = 549; 
+  const leagueId = 203; 
+
+  const selectElement = document.getElementById('seasonSelect');
+  const tbody = document.querySelector('#statsTable tbody');
+
+  
+  function loadTeamInfo() {
+    fetch(`https://v3.football.api-sports.io/teams?id=${teamId}`, {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'v3.football.api-sports.io',
+        'x-rapidapi-key': apiKey
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      const team = data.response[0].team;
+      const venue = data.response[0].venue;
+
+      document.getElementById('teamLogo').src = team.logo;
+      document.getElementById('teamName').textContent = team.name;
+      document.getElementById('teamDetails').textContent = 
+        `Ülke: ${team.country} | Kuruluş: ${team.founded} | Stadyum: ${venue.name}`;
+    })
+    .catch(err => {
+      console.error("Takım bilgisi alınamadı:", err);
+    });
+  }
+
+  
+  function getStats(season) {
+    tbody.innerHTML = `<tr><td colspan="2">Yükleniyor...</td></tr>`;
+
+    fetch(`https://v3.football.api-sports.io/teams/statistics?season=${season}&team=${teamId}&league=${leagueId}`, {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': 'v3.football.api-sports.io',
+        'x-rapidapi-key': apiKey
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      const stats = data.response;
+
+      const statsToShow = {
+        "Oynanan Maç": stats.fixtures?.played?.total ?? '-',
+        "Kazandığı Maç": stats.fixtures?.wins?.total ?? '-',
+        "Beraberlik": stats.fixtures?.draws?.total ?? '-',
+        "Kaybedilen Maç": stats.fixtures?.loses?.total ?? '-',
+        "Atılan Gol": stats.goals?.for?.total?.total ?? '-',
+        "Yenilen Gol": stats.goals?.against?.total?.total ?? '-',
+        "Penaltıdan Atılan Gol": stats.penalty?.scored?.total ?? '-',
+        "Kaçırılan Penaltı": stats.penalty?.missed?.total ?? '-'
+      };
+
+      tbody.innerHTML = '';
+      for (const [key, value] of Object.entries(statsToShow)) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${key}</td><td>${value}</td>`;
+        tbody.appendChild(tr);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      tbody.innerHTML = `<tr><td colspan="2">Hata oluştu, veri alınamadı.</td></tr>`;
+    });
+  }
+
+  loadTeamInfo();
+
+  selectElement.addEventListener('change', function () {
+    const selectedSeason = this.value;
+    getStats(selectedSeason);
+  });
+
+
+
+  window.addEventListener('scroll', function() {
+    var footer = document.getElementById('site-footer');
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        footer.style.opacity = "1";
+    } else {
+        footer.style.opacity = "0"; 
+    }
+});
+
+</script>
+
+</body>
+</html>

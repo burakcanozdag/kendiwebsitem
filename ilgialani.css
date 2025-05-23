@@ -1,0 +1,92 @@
+body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .team-info {
+      background: white;
+      padding: 20px;
+      width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .team-info img {
+      height: 80px;
+    }
+    .team-info-details {
+      flex: 1;
+    }
+    .team-info-details h2 {
+      margin: 0 0 5px;
+    }
+    .stats-container {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      width: 600px;
+      padding: 25px;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 14px 20px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #457b9d;
+      color: white;
+    }
+    tbody tr:hover {
+      background-color: #a8dadc;
+    }
+
+    .menu{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.menu a {
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #fff;
+    background: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    background: #ff6ecf;
+    transform: scale(1.1);
+}
+
+#site-footer {
+    background-color: #2C3E50; 
+    color: white;
+    text-align: center;
+    padding: 2px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}

@@ -1,19 +1,31 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $isim = $_POST["isim"];
-    $soyisim = $_POST["soyisim"];
-    $email = $_POST["email"];
-    $no = $_POST["no"];
-    $mesaj = $_POST["mesaj"];
-    $cinsiyet = $_POST["cinsiyet"];
+    $isim = htmlspecialchars($_POST["isim"]);
+    $soyisim = htmlspecialchars($_POST["soyisim"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $no = htmlspecialchars($_POST["no"]);
+    $mesaj = htmlspecialchars($_POST["mesaj"]);
+    $cinsiyet = htmlspecialchars($_POST["cinsiyet"]);
 
-    echo "Ad: $isim<br>";
-    echo "Soyad: $soyisim<br>";
-    echo "Email: $email<br>";
-    echo "Telefon: $no<br>";
-    echo "Mesaj: $mesaj<br>";
-    echo "Cinsiyet: $cinsiyet<br>";
+    $response = [
+        "status" => "success",
+        "message" => "Form başarıyla alındı.",
+        "data" => [
+            "isim" => $isim,
+            "soyisim" => $soyisim,
+            "email" => $email,
+            "telefon" => $no,
+            "mesaj" => $mesaj,
+            "cinsiyet" => $cinsiyet
+        ]
+    ];
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
 } else {
-    echo "Geçersiz istek!";
+    $response = ["status" => "error", "message" => "Geçersiz istek!"];
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 ?>
+
