@@ -123,4 +123,49 @@ section h2 {
 }
 
 
+@media (max-width: 900px) {
+  table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  td, th {
+    padding: 8px;
+     font-size: 16px !important;  
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 5px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .menu a {
+    padding: 8px 0;
+    font-size: 16px;
+  }
+
+  section {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  td img, th img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
 

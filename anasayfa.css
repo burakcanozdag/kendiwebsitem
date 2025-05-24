@@ -5,48 +5,47 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    display: block;
+    background: linear-gradient(to right, #F3F6F9, #DCE3E9);
+    padding: 0 10px;
+}
+
 .table {
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid #ddd;
 }
 
-.renklihücre{
+.renklihücre {
     text-align: center;
     background-color: #ECF0F1;
     color: #2C3E50;
+    padding: 15px;
 }
 
-.renkligörsel{
+.renkligörsel {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    padding: 10px;
 }
 
-.rektorsatir{
+.rektorsatir {
     text-align: center;
     padding-top: 20px;
 }
 
-.baslik{
- color:darkslategray
+.baslik {
+    color: darkslategray;
 }
 
-
-
-body {
-    display: grid;
-    height: 100%;
-    place-items: center;
-    background: linear-gradient(to right, #F3F6F9, #DCE3E9);
-}
-
-
-.menu{
+.menu {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
+    padding: 20px 0;
 }
 
 .menu a {
@@ -60,6 +59,7 @@ body {
     letter-spacing: 1px;
     text-align: center;
     transition: 0.3s ease;
+    white-space: nowrap;
 }
 
 .menu a:hover {
@@ -67,15 +67,80 @@ body {
     transform: scale(1.1);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+iframe {
+    width: 560px;
+    height: 315px;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+    border: none;
+}
+
 #site-footer {
-    background-color: #2C3E50; 
+    background-color: #2C3E50;
     color: white;
     text-align: center;
     padding: 15px;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
-    opacity: 0; 
+    opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    z-index: 999;
 }
 
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+td, th {
+    padding: 10px;
+    vertical-align: top;
+}
+
+
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu a {
+        width: 90%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    td {
+        display: block;
+        width: 100% !important;
+    }
+
+   iframe {
+        width: 100% !important;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+    
+    h2, h3 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
