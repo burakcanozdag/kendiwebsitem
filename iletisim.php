@@ -1,4 +1,7 @@
 <?php
+error_reporting(0); 
+ini_set('display_errors', 0); 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $isim = htmlspecialchars($_POST["isim"]);
     $soyisim = htmlspecialchars($_POST["soyisim"]);
@@ -7,25 +10,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mesaj = htmlspecialchars($_POST["mesaj"]);
     $cinsiyet = htmlspecialchars($_POST["cinsiyet"]);
 
-    $response = [
-        "status" => "success",
-        "message" => "Form başarıyla alındı.",
-        "data" => [
-            "isim" => $isim,
-            "soyisim" => $soyisim,
-            "email" => $email,
-            "telefon" => $no,
-            "mesaj" => $mesaj,
-            "cinsiyet" => $cinsiyet
-        ]
-    ];
+   
+    $dosyaYolu = __DIR__ . "/iletisim.txt";
+    if (!is_writable($dosyaYolu)) {
+        die(json_encode(["status" => "error", "message" => "Dosya yazılamıyor!"]));
+    }
 
+   
+    $veri = "İsim: $isim | Soyisim: $soyisim | Email: $email | Telefon: $no | Mesaj: $mesaj | Cinsiyet: $cinsiyet\n";
+    file_put_contents($dosyaYolu, $veri, FILE_APPEND);
+
+    
     header('Content-Type: application/json');
-    echo json_encode($response);
+    echo json_encode(["status" => "success", "message" => "Form başarıyla kaydedildi!", "data" => $_POST]);
 } else {
-    $response = ["status" => "error", "message" => "Geçersiz istek!"];
     header('Content-Type: application/json');
-    echo json_encode($response);
+    echo json_encode(["status" => "error", "message" => "Geçersiz istek!"]);
 }
 ?>
-
